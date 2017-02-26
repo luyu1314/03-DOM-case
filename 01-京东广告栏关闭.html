@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .w {
+            width: 1210px;
+            margin: 0 auto;
+        }
+        .site-nav {
+            height: 30px;
+            background-color: #ccc;
+        }
+        .top-banner {
+            background-color: pink
+        }
+        .tb {
+            position: relative
+        }
+        .img {
+            display: block;
+            height: 80px;
+            background-color: blue
+        }
+        .close-banner {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            width: 20px;
+            height: 20px;
+            color: red;
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+            font: 700 16px/20px "simsun";
+            text-decoration: none;
+        }
+        .box {
+            height: 100px;
+            background-color: yellowgreen;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--顶部导航栏-->
+<div class="site-nav">
+    <div class="w"></div>
+</div>
+<!--广告栏-->
+<div class="top-banner" id="topBanner">
+    <div class="w tb">
+        <a href="#" class="img"></a>
+        <!--关闭按钮-->
+        <a href="javascript:;" class="close-banner" id="closeBanner">×</a>
+        <!--<a href="javascript:void(0);" class="close-banner" id="closeBanner">×</a>-->
+    </div>
+</div>
+<!--搜索栏-->
+<div class="w box"></div>
+
+
+<script>
+    //需求：点击关闭盒子，让所在的大盒子(top-banner)隐藏。(不占位置)
+    //步骤：
+    //1.获取事件源和相关元素
+    //2.绑定事件
+    //3.书写事件驱动程序(给指定元素添加类名)
+
+
+    //1.获取事件源和相关元素
+    var topBanner = document.getElementById("topBanner");
+    var closeBanner = document.getElementById("closeBanner");
+
+    //2.绑定事件
+    closeBanner.onclick = function () {
+        //3.书写事件驱动程序(给指定元素添加类名)
+        //className的控制。class是关键字，所以控制他用className属性。
+        //在原有基础上加上一个类名。
+        topBanner.className = "top-banner hide";
+    }
+
+</script>
+
+</body>
+</html>

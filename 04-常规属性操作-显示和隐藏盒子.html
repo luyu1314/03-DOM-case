@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        div {
+            margin: 100px;
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //需求：点击按钮，隐藏盒子。在点击显示盒子。而且按钮中的内容要一致。
+            //技术点：修改两个闭合标签之间的内容用innerHTML;
+            //步骤：
+            //1.获取事件源和相关元素
+            //2.绑定事件
+            //3.书写事件驱动程序（修改class属性，和button的值）
+
+            //1.获取事件源和相关元素
+            var btn = document.getElementById("btn");
+            var div = document.getElementsByTagName("div")[0];
+            //2.绑定事件
+            btn.onclick = function () {
+                //3.书写事件驱动程序（修改class属性，和button的值）
+                //修改盒子状态之前需要判断一下。显示还是隐藏。
+                //如果btn的内容为隐藏。就隐藏盒子并把btn的内容改为显示
+                //否则。就显示盒子并把btn的内容改为隐藏
+
+                if(btn.innerHTML == "隐藏"){//既能获取值，又可以赋值。
+                    //隐藏盒子，和设置按钮的内容。
+                    div.className = "hide";
+                    btn.innerHTML = "显示";
+                }else{
+                    //隐藏盒子，和设置按钮的内容。
+                    div.className = "";
+                    btn.innerHTML = "隐藏";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<button id="btn">隐藏</button>
+
+<div>
+    曾虑多情损梵行，入山又恐别倾城，世间安得双全法，不负如来不负卿。
+
+</div>
+
+
+
+
+</body>
+</html>

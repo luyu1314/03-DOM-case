@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<img id="box" src="images/02-1.png"/>
+
+<script>
+    //需求：鼠标进入换一张图片。移开在换回来。
+    //技术点：鼠标进入/移开事件： onmouseover/onmouseout;
+    //思路：鼠标进入修改img的src属性。
+    //思路：鼠标移开修改img的src属性。
+
+
+    //步骤:
+    //1.获取事件源
+    //2.绑定事件
+    //3.书写事件驱动程序(修改src属性)
+
+    //1.获取事件源
+    var img = document.getElementById("box");
+    //2.绑定事件
+    img.onmouseover = function () {
+        //3.书写事件驱动程序(修改src属性)
+        img.src = "images/02-2.png";
+    }
+
+    //2.绑定事件(移开)
+    img.onmouseout = fn;
+    function fn() {
+        //3.书写事件驱动程序(修改src属性)
+        this.src = "images/02-1.png";
+    }
+
+</script>
+
+</body>
+</html>

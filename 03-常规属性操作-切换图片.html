@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            display: block;
+            margin: 100px 0;
+        }
+    </style>
+</head>
+<body>
+
+<!--<a href="http://www.baidu.com" onclick="fn();return false;">切换</a>-->
+<a href="http://www.baidu.com">切换</a>
+
+<img id="box" src="images/03-1.jpg" width="400"/>
+
+<script>
+    //需求：点击a链接，让img图片更换另外一张。
+    //难点：点击a链接，页面会跳转到百度页面。  解决办法：return false; a链接默认的跳转被关闭。
+    //步骤：
+    //1.获取事件源和相关元素
+    //2.绑定事件
+    //3.书写事件驱动程序（修改img的src属性）
+
+    //1.获取事件源和相关元素
+    var a = document.getElementsByTagName("a")[0];
+    var img = document.getElementById("box");
+
+    //2.绑定事件
+    a.onclick = function () {
+        //3.书写事件驱动程序（修改img的src属性）
+        img.src = "images/03-2.jpg";
+        //解决不了页面跳转的问题。
+        //解决办法：return false; a链接默认的跳转被关闭。
+        return false;
+    }
+
+</script>
+
+</body>
+</html>
