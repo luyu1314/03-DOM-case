@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //需求：点击小图片，让下面的大图片修改路径，让下面的p标签修改innerHTML.
+            //获取的是a链接的title和href属性。a链接是事件源。
+            //因为事件源太多，所以for循环绑定。
+
+            //步骤：
+            //1.获取事件源和相关元素（img和p）。
+            //2.绑定事件。
+            //3.书写事件驱动程序。（获取的是a链接的title和href属性。img和p的src属性和innerHTML属性）
+
+
+
+            //1.获取事件源和相关元素（img和p）。
+            //缩小范围获取a标签
+            var ul = document.getElementById("imagegallery");
+            var aArr = ul.getElementsByTagName("a");
+            var p = document.getElementById("des");
+            var image = document.getElementById("image");
+            //2.绑定事件。(for循环绑定事件)
+            for(var i=0;i<aArr.length;i++){
+                //为每一个a链接绑定事件
+                aArr[i].onclick = function () {
+                    //3.书写事件驱动程序。（获取的是a链接的title和href属性。img和p的src属性和innerHTML属性）
+                    //这里的this指的是当前调用点击事件的元素
+                    p.innerHTML = this.title;
+                    image.src = this.href;
+                    //禁止a链接跳转
+                    return false;
+                }
+            }
+        }
+    </script>
+
+</head>
+<body>
+<h2>
+    美女画廊
+</h2>
+<a href="#">注册</a>
+<ul id="imagegallery">
+    <li>
+        <a href="images/05-1.jpg" title="美女A">
+            <img src="images/05-1-small.jpg" width="100" alt="美女1"/>
+        </a>
+    </li>
+    <li>
+        <a href="images/05-2.jpg" title="美女B">
+            <img src="images/05-2-small.jpg" width="100" alt="美女2"/>
+        </a>
+    </li>
+    <li>
+        <a href="images/05-3.jpg" title="美女C">
+            <img src="images/05-3-small.jpg" width="100" alt="美女3"/>
+        </a>
+    </li>
+    <li>
+        <a href="images/05-4.jpg" title="美女D">
+            <img src="images/05-4-small.jpg" width="100" alt="美女4"/>
+        </a>
+    </li>
+</ul>
+
+
+<div style="clear:both"></div>
+<img id="image" src="images/05-placeholder.png" width="450px"/>
+<p id="des">选择一个图片</p>
+
+
+</body>
+</html>

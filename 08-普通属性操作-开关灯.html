@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            width: 700px;
+            display: block;
+            margin: 100px auto;
+        }
+        .bgc {
+            background: rgba(0, 0, 0, 1);
+        }
+    </style>
+</head>
+<script>
+
+    window.onload = function () {
+        //需求：点击按钮，背景变为黑色内容改变开灯，再次点击变回来。
+        //步骤：
+        //1.获取事件源和相关元素
+        //2.绑定事件
+        //3.书写事件驱动程序
+
+        //1.获取事件源和相关元素
+        var btn = document.getElementsByTagName("button")[0];
+        var body = document.getElementsByTagName("body")[0];
+//        var body = document.body;
+        //2.绑定事件
+        btn.onclick = function () {
+            //3.书写事件驱动程序
+            //判断：如果内容是关灯，那么就加类，该内容。如果是开灯，那么变回来。
+            if(this.innerHTML == "关灯"){
+                body.className = "bgc";
+                this.innerHTML = "开灯";
+            }else{
+                body.className = "";
+                this.innerHTML = "关灯";
+            }
+        }
+    }
+
+</script>
+<body>
+
+<button>关灯</button>
+<img src="images/08-1.jpg"/>
+
+
+</body>
+</html>

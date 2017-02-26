@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>京东正品</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .site-nav {
+            height: 30px;
+            line-height: 30px;
+            background-color: #ccc;
+        }
+        .w {
+            width: 1210px;
+            margin: 0 auto;
+        }
+        .site-nav-left {
+            float: left;
+            width: 100px;
+        }
+        .site-nav-left-send {
+            width: 100px;
+            text-align: center;
+        }
+        .site-nav-left:hover {
+            background-color: #fff;
+        }
+        ul {
+            list-style: none;
+            width: 240px;
+            height: 230px;
+            text-align: left;
+            background-color: pink;
+            display: none;
+        }
+        li {
+            padding: 5px;
+            line-height: 30px;
+        }
+        li:hover {
+            background-color: red;
+            cursor: pointer;
+        }
+        .show {
+            display: block;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //需求1：鼠标进入site-nav-left显示ul，移开隐藏ul。
+            //需求2：点击li标签，替换box1里面的内容，同事隐藏ul。
+
+            //需求1：鼠标进入site-nav-left显示ul，移开隐藏ul。
+            var box = document.getElementById("box");
+            var box1 = document.getElementById("box1");
+            var ul = document.getElementById("box2");
+
+            //鼠标进入移开隐藏。
+            box.onmouseover = function () {
+                ul.className = "show";
+            }
+            box.onmouseout = function () {
+                ul.className = "";
+            }
+
+            //需求2：点击li标签，替换box1里面的内容，同事隐藏ul。
+            //步骤：
+            //1.获取事件源（li标签数组）
+            //2.绑定事件（循环绑定）
+            //3.书写事件驱动程序（改内容，隐藏ul）
+
+
+            //1.获取事件源（li标签数组）
+            var liArr = ul.getElementsByTagName("li");
+            //2.绑定事件（循环绑定）
+            for(var i=0;i<liArr.length;i++){
+                liArr[i].onclick = function () {
+                    //3.书写事件驱动程序（改内容，隐藏ul）
+                    box1.innerHTML = "送至:"+this.innerHTML;
+                    ul.className = "";
+                }
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+<div class="site-nav">
+    <div class="w">
+        <div class="site-nav-left" id="box">
+            <div class="site-nav-left-send" id="box1">送至:北京</div>
+            <ul id="box2">
+                <li>北京</li>
+                <li>上海</li>
+                <li>广州</li>
+                <li>深圳</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
