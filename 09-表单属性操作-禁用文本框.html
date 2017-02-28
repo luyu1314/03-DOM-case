@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<button>禁用</button>
+<button>解禁</button>
+<input type="text" id="inp"/>
+
+<script>
+    //禁用文本框：利用表单的disabled属性
+
+    //步骤：
+    //1.获取事件源。
+    //2.绑定事件。
+    //3.书写事件驱动程序。
+
+    //1.获取事件源。
+    var btnArr = document.getElementsByTagName("button");
+    var inp = document.getElementById("inp");
+    //2.绑定事件。
+    btnArr[0].onclick = function () {
+        //3.书写事件驱动程序。
+        inp.disabled = true;//所有数据都有一个对应的布尔类型值，在这个位置，如果想禁用文本那么直接给对应的true类型就可以禁用，给false解禁。
+    }
+
+    //2.绑定事件。
+    btnArr[1].onclick = function () {
+        //3.书写事件驱动程序。
+        inp.disabled = false;//所有数据都有一个对应的布尔类型值，在这个位置，如果想禁用文本那么直接给对应的true类型就可以禁用，给false解禁。
+    }
+</script>
+
+</body>
+</html>

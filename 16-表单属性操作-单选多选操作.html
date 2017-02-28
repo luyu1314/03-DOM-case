@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        window.onload = function () {
+            //需求1：点击男生按钮，让性别被选定，以及自己的爱好被选定。
+            //需求2：点击女生按钮，让性别被选定，以及自己的爱好被选定。
+
+            //技术点：选择按钮，被选定使用checked属性。
+
+
+            //需求1：思路：老三步。（给指定的按钮加checked属性）
+            var btnArr = document.getElementsByTagName("button");
+            var inpArr = document.getElementsByTagName("input");
+
+            //点击按钮，设置男生爱好
+            btnArr[0].onclick = function () {
+                //清除所有选项（排他思想）；
+                for(var i=0;i<inpArr.length;i++){
+                    inpArr[i].checked = false;
+                }
+
+                //设置男生相关信息；把指定元素加checked属性。
+                inpArr[0].checked = true;
+                inpArr[6].checked = true;
+                inpArr[7].checked = true;
+                inpArr[8].checked = true;
+            }
+
+            //点击按钮，设置女生爱好
+            btnArr[1].onclick = function () {
+                //清除所有选项（排他思想）；
+                for(var i=0;i<inpArr.length;i++){
+                    inpArr[i].checked = false;
+                }
+
+                //设置男生相关信息；把指定元素加checked属性。
+                inpArr[1].checked = true;
+                inpArr[2].checked = true;
+                inpArr[3].checked = true;
+                inpArr[4].checked = true;
+                inpArr[5].checked = true;
+                inpArr[8].checked = true;
+            }
+        }
+    </script>
+</head>
+<body>
+
+<button>男生</button>
+<button>女生</button><br><br>
+
+
+<input type="radio" name="gender"/>男
+<input type="radio" name="gender"/>女<br><br>
+
+<input type="checkbox"/>逛街
+<input type="checkbox"/>买衣服
+<input type="checkbox"/>睡觉
+<input type="checkbox"/>剪头发
+<input type="checkbox"/>抽烟
+<input type="checkbox"/>喝酒
+<input type="checkbox"/>生活不止眼前的苟且还有HTML和css及JS
+
+</body>
+</html>

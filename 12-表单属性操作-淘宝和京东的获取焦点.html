@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            width: 300px;
+            height: 35px;
+            font: 600 20px/35px "simsun";
+            padding-left: 10px;
+            color: #ccc;
+        }
+        label {
+            position: absolute;
+            top: 79px;
+            color: #ccc;
+            left: 105px;
+            cursor: text;
+        }
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+京东网站：<input id="inp1" type="text" value="VR虚拟现实"/><br><br>
+淘宝网站：<label for="inp2">淘宝网</label><input id="inp2" type="text" style="color: #000;"/><br><br>
+<!--这个标签在火狐谷歌中类似输入事件。在ie9+中类似获取焦点失去焦点事件.IE678中不直接改属性。-->
+placeholder：<input type="text" placeholder="我是placeholder"/><br>
+
+
+<script>
+
+    //模拟京东搜索框：
+    var inp1 = document.getElementById("inp1");
+    //只要input获取插入条光标，value属性值设置为空。
+    inp1.onfocus = function () {
+        //判断：只有内容为"VR虚拟现实"的时候才清空。
+        if(this.value == "VR虚拟现实"){
+            this.value = "";
+//            this.style.color = "#000";
+        }
+    }
+    inp1.onblur = function () {
+        //判断：只有内容为空的时候才设置。
+        if(this.value === ""){
+//            this.style.color = "#ccc";
+            this.value = "VR虚拟现实";
+        }
+    }
+
+
+
+
+    //淘宝搜索栏：只要在input中输入内容就判断。只有内容不为空的情况，隐藏label。
+    var inp2 = document.getElementById("inp2");
+    var label = document.getElementsByTagName("label")[0];
+
+    inp2.oninput = function () {
+        //判断：内容如果不为空，隐藏label，如果为空显示label。
+        if(this.value != ""){
+            //隐藏label
+            label.className = "hide";
+        }else{
+            //否则显示label
+            label.className = "";
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>

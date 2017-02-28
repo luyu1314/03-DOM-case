@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+<input type="text"/>
+
+<button>赋值</button>
+<button>获取</button>
+
+
+<script>
+    //需求：点击按钮，为每一个input赋值，和获取所有值。
+
+    var inpArr = document.getElementsByTagName("input");
+    var btnArr = document.getElementsByTagName("button");
+
+    //赋值
+    btnArr[0].onclick = function () {
+        //利用for循环，为每一个input赋值。
+        for(var i=0;i<inpArr.length;i++){
+            inpArr[i].value = i;
+        }
+    }
+
+
+    //获取
+    btnArr[1].onclick = function () {
+        var str = "";
+        //利用for循环，为每一个input赋值。
+        for(var i=0;i<inpArr.length;i++){
+            //累加到一个string中。
+            str += inpArr[i].value;
+        }
+        console.log(str);
+    }
+
+</script>
+
+</body>
+</html>

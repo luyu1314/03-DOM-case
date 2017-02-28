@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+            width: 300px;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+            //需求1：点击上面的多选按钮，下面的多选按钮联动。（上面的被选中，下面的也被选中。上面的被取消，下面的联动被取消）
+            //需求2：点击下面的每一个多选按钮，都要进行判断，只有下面的所有按钮全部被选定，上面的才被选定。如果有一个没有被选定的，上面的也不被选定。
+
+
+            //需求1：点击上面的多选按钮，下面的多选按钮联动。
+            //步骤：
+            //1.获取事件源和相关元素
+            //2.绑定事件
+            //3.书写事件驱动程序（给指定元素添加checked属性）
+
+
+            //1.获取事件源和相关元素
+            var tbody = document.getElementById("tbody");
+            var inpBottomArr = tbody.getElementsByTagName("input");
+            var theadInp = document.getElementById("theadInp");
+//            //2.绑定事件//改完以后才触动的onclick事件
+//            theadInp.onclick = function () {
+//                //3.书写事件驱动程序（给指定元素添加checked属性）
+//                //判断：如果原来是false，现在变成true；如果原来是true，现在变成false:
+//                if(this.checked == true){
+//                    //for循环操作checked属性
+//                    for(var i=0;i<inpBottomArr.length;i++){
+//                        inpBottomArr[i].checked = true;
+//                    }
+//                }else{
+//                    //for循环操作checked属性
+//                    for(var i=0;i<inpBottomArr.length;i++){
+//                        inpBottomArr[i].checked = false;
+//                    }
+//                }
+//            }
+
+            //简单版。
+            theadInp.onclick = function () {
+                //上面的值是什么，下面的跟着就可以了。（不需要判断了）
+                for(var i=0;i<inpBottomArr.length;i++){
+                    inpBottomArr[i].checked = this.checked;
+                }
+            }
+
+
+            //需求2：点击下面的每一个多选按钮，都要进行判断，只有下面的所有按钮全部被选定，上面的才被选定。如果有一个没有被选定的，上面的也不被选定。
+            //步骤：（思路：1.所有被选中的个数为4个，让上面被选中。）
+            //步骤：（思路：2.开闭原则，只要下面的按钮有一个是false，上面的也是。）
+            //1.获取事件源
+            //2.绑定事件
+            //3.书写事件驱动程序
+
+            //1.获取事件源
+            //2.绑定事件(为下面的每一个input绑定事件)
+            for(var i=0;i<inpBottomArr.length;i++){
+                inpBottomArr[i].onclick = function () {
+                    //3.书写事件驱动程序
+                    //开闭原则，只要下面的按钮有一个是false，上面的也是。
+                    var bool = true;
+                    //判断，利用for循环判断，有一个checked属性值为false，上面的也是false；
+                    for(var j=0;j<inpBottomArr.length;j++){
+                        if(inpBottomArr[j].checked == false){
+                            bool = false;
+                        }
+                    }
+                    //为上面的input赋值。
+                    theadInp.checked = bool;
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="wrap">
+    <table>
+
+        <thead>
+        <tr>
+            <th>
+                <input type="checkbox" id="theadInp" />
+            </th>
+            <th>菜名</th>
+            <th>饭店</th>
+        </tr>
+        </thead>
+
+        <tbody id="tbody">
+        <tr>
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>地三鲜</td>
+            <td>好嫂子</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>西红柿鸡蛋</td>
+            <td>好嫂子</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>醋溜土豆丝</td>
+            <td>好嫂子</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="checkbox" />
+            </td>
+            <td>拍黄瓜</td>
+            <td>好嫂子</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+
+
+</body>
+</html>

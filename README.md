@@ -23,8 +23,7 @@ some case about DOM to practice
 <tr><td>序号<td>案例名称<td>备注</tr>
 <tr><td>09<td>禁用文本框<td>利用表单的disabled属性</tr>
 <tr><td>10<td>获取失去焦点<td>onfocus/onblur</tr>
-<tr><td>11<td>输入事件<td>（input标签或者可输入内容的标签，只要输入或者删除哪怕一个字母都会触发oninput这个事件
-）</tr>
+<tr><td>11<td>输入事件<td>input事件</tr>
 <tr><td>12<td>淘宝/京东获取焦点<td></tr>
 <tr><td>13<td>input赋值和取值<td></tr>
 <tr><td>14<td>select选择鲤鱼<td>所在的option标签的selected属性</tr>

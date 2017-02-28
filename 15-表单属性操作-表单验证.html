@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .wrong {
+            border: 1px solid red;
+            background-color: #ccc;
+        }
+        .right {
+            border: 1px solid greenyellow;
+            background-color: #fff;
+        }
+        input {
+            outline-style: none;
+        }
+    </style>
+</head>
+<body>
+
+<label for="inp1">用户名: </label><input type="text" id="inp1"/><br><br>
+<label for="inp2">密  码: </label><input type="password" id="inp2"/><br><br>
+
+
+<script>
+
+    //需求：当input失去焦点的时候，判断用户名或者密码，如果长度小于6或者大于12，报错！
+
+    //步骤：
+    //1.获取事件源
+    //2.绑定事件
+    //3.书写事件驱动程序
+
+    //1.获取事件源
+    var inp1 = document.getElementById("inp1");
+    //2.绑定事件(失去焦点事件)
+    inp1.onblur = function () {
+        //3.书写事件驱动程序
+        //判断：如果内容的长度为6-12位正确，否则是错误。
+        if(this.value.length < 6 || this.value.length > 12){
+            this.className = "wrong";
+        }else{
+            this.className = "right";
+        }
+    }
+
+</script>
+
+</body>
+</html>

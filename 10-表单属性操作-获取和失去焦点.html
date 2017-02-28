@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<input type="text"/>
+
+<script>
+
+    //获取和失去焦点事件。    onfocus/onblur  :获取插入条光标和失去插入条光标的瞬间触动这两个对应的事件。
+
+    var inp = document.getElementsByTagName("input")[0];
+
+    //获取焦点事件
+    inp.onfocus = function () {
+        console.log("我获取了input的焦点，插入条光标！");
+    }
+
+    //失去焦点事件
+    inp.onblur = function () {
+        console.log("我失去了input的焦点，插入条光标！");
+    }
+
+</script>
+</body>
+</html>
