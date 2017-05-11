@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            height: 300px;
+            font: 22px/26px "simsun";
+            background-color: #b1ff66;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //问题：1.true === optArr[i];     2.长度判断问题。只有长度大于3,才循环判断
+
+            //需求1：点击前两个按钮，所在一侧的select标签中的所有option都移动到另一侧select标签中。
+            //需求2：点击后两个按钮，被选中的移动到另一侧。（标签上selected属性为true的移动到另一侧）
+
+            var sel1 = document.getElementById("sel1");
+            var sel2 = document.getElementById("sel2");
+            var inpArr = document.getElementsByTagName("input");
+
+            //绑定时间的时候注意：1.要用匿名函数隔开，不能直接调用。
+                             //2.如果直接调用函数名，没有参数。如果带参，相当于把函数的返回值赋值给onclick事件了。
+            inpArr[0].onclick= function () {
+                fn1(sel1,sel2);
+            }
+            inpArr[1].onclick= function () {
+                fn1(sel2,sel1);
+            }
+            //后两个按钮，调用新函数:  1.要用匿名函数隔开。
+            inpArr[2].onclick= function () {
+                fn2(sel1,sel2);
+            }
+            inpArr[3].onclick= function () {
+                fn2(sel2,sel1);
+            }
+            //封装前两个方法。一个先传左边一个先传右边。
+            function fn1(ele1,ele2) {
+                var optArr = ele1.children;
+                for(var i=0;i<optArr.length;){
+                    ele2.appendChild(optArr[i]);
+                }
+            }
+
+
+            //封装前两个方法。一个先传左边一个先传右边。
+            function fn2(ele1,ele2) {
+                var optArr = ele1.children;
+                for(var i=0;i<optArr.length;i++){
+                    if(true == optArr[i].selected){
+                        ele2.appendChild(optArr[i]);
+                        i--;
+                    }
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+    <select name="" id="sel1" size="10" multiple>
+        <option value="">香蕉</option>
+        <option value="">苹果</option>
+        <option value="">鸭梨</option>
+        <option value="">橘子</option>
+    </select>
+
+    <input type="button" value=">>>"/>
+    <input type="button" value="<<<"/>
+    <input type="button" value=">"/>
+    <input type="button" value="<"/>
+
+    <select name="" id="sel2" size="10" multiple>
+
+    </select>
+
+
+</body>
+</html>

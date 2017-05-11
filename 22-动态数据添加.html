@@ -1,0 +1,328 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .wrap {
+            width: 410px;
+            margin: 100px auto 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+        
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+        
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+        
+        td {
+            font: 14px "微软雅黑";
+        }
+        
+        td a.get {
+            text-decoration: none;
+        }
+        
+        a.del:hover {
+            text-decoration: underline;
+        }
+        
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+        
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+        
+        .btnAdd {
+            width: 110px;
+            height: 30px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .form-item {
+            height: 100%;
+            position: relative;
+            padding-left: 100px;
+            padding-right: 20px;
+            margin-bottom: 34px;
+            line-height: 36px;
+        }
+        
+        .form-item>.lb {
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: block;
+            width: 100px;
+            text-align: right;
+        }
+        
+        .form-item>.txt {
+            width: 300px;
+            height: 32px;
+        }
+        
+        .mask {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: 0.5;
+            display: none;
+        }
+        
+        .form-add {
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            margin-left: -197px;
+            padding-bottom: 20px;
+            background: #fff;
+            display: none;
+        }
+        
+        .form-add-title {
+            background-color: #f7f7f7;
+            border-width: 1px 1px 0 1px;
+            border-bottom: 0;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .form-add-title span {
+            width: auto;
+            height: 18px;
+            font-size: 16px;
+            font-family: 宋体;
+            font-weight: bold;
+            color: rgb(102, 102, 102);
+            text-indent: 12px;
+            padding: 8px 0px 10px;
+            margin-right: 10px;
+            display: block;
+            overflow: hidden;
+            text-align: left;
+        }
+        
+        .form-add-title div {
+            width: 16px;
+            height: 20px;
+            position: absolute;
+            right: 10px;
+            top: 6px;
+            font-size: 30px;
+            line-height: 16px;
+            cursor: pointer;
+        }
+        
+        .form-submit {
+            text-align: center;
+        }
+        
+        .form-submit input {
+            width: 170px;
+            height: 32px;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            //需求1：点击添加按钮，显示遮罩层和添加区域
+            //需求2：点击添加区域中的关闭按钮，隐藏遮罩层和添加区域
+            //需求3：点击添加区域中的添加按钮，把添加区域中的内容组合成一个tr添加到tabel标签中。
+            //需求4：点击GET所在的a链接删除，他所在的tr；
+
+
+            //需求1：点击添加按钮，显示遮罩层和添加区域
+            //步骤：老三步。显示隐藏盒子。
+            var btn1 = document.getElementById("j_btnAddData");
+            var mask = document.getElementById("j_mask");
+            var formAdd = document.getElementById("j_formAdd");
+
+            btn1.onclick = function() {
+                    //显示盒子
+                    mask.style.display = "block";
+                    formAdd.style.display = "block";
+                }
+                //需求2：点击添加区域中的关闭按钮，隐藏遮罩层和添加区域
+            var btn2 = document.getElementById("j_hideFormAdd");
+            btn2.onclick = function() {
+                //隐藏盒子
+                mask.style.display = "none";
+                formAdd.style.display = "none";
+            }
+
+            //需求3：点击添加区域中的添加按钮，把添加区域中的内容组合成一个tr添加到tabel标签中。
+            //步骤：
+            //1.获取相关元素，相关属性值。
+            //2.创建tr标签，然后设置innerHTML属性
+            //3.把获取到的属性值，赋值到innerHTML属性中的指定区域。
+            //4.把tr添加到tbody中。
+
+            var btnAdd = document.getElementById("j_btnAdd");
+            var tbody = document.getElementById("j_tb");
+            var j_txtLesson = document.getElementById("j_txtLesson");
+            var j_txtBelSch = document.getElementById("j_txtBelSch");
+
+            btnAdd.onclick = function() {
+                //bug3: 添加之前先判断，如果内容为空，不能添加
+                if ("" === j_txtLesson.value || "" === j_txtLesson.value.trim()) {
+                    alert("添加内容不能为空！");
+                    return;
+                }
+                //步骤：
+                //1.获取相关元素，相关属性值。(点击之后在获取。)
+                var value1 = j_txtLesson.value;
+                var value2 = j_txtBelSch.value;
+                //2.创建tr标签
+                var newTr = document.createElement("tr");
+                //3.然后设置innerHTML属性,把获取到的属性值，赋值到innerHTML属性中的指定区域。
+                newTr.innerHTML = '<td>' + value1 + '</td><td>' + value2 + '</td><td><a href="javascrip:;" class="get">GET</a></td>';
+                //4.把tr添加到tbody中。
+                tbody.appendChild(newTr);
+                //bug1: 添加完毕要隐藏遮罩层和添加区域
+                //隐藏盒子
+                mask.style.display = "none";
+                formAdd.style.display = "none";
+                //bug2: 添加完毕，课程名称内容需要清空
+                j_txtLesson.value = "";
+
+
+
+                //需求4：点击GET所在的a链接删除，他所在的tr；
+                //每产生一个新的a链接，都绑定一次。
+                var a = newTr.getElementsByTagName('a')[0];
+                //绑定事件
+                a.onclick = function() {
+                    //删除所在的tr
+                    tbody.removeChild(this.parentNode.parentNode);
+                }
+
+                //                //需求4：点击GET所在的a链接删除，他所在的tr；
+                //                    //第一种把获取a链接的位置写到生成新的tr事件内容。这样每产生一个新的tr
+                //                    //都获取一次a链接绑定一次事件。   缺点：绑定次数太多。
+                //                var aArr = tbody.getElementsByTagName('a');
+                //                //for循环遍历
+                //                for(var i=0;i<aArr.length;i++){
+                //                    //绑定事件
+                //                    aArr[i].onclick = function () {
+                //                        //删除所在的tr
+                //                        tbody.removeChild(this.parentNode.parentNode);
+                //                    }
+                //                }
+
+            }
+
+
+            //和每个新产生的a链接绑定事件配合，这样新的a和就的a就都有事件了。
+            var aArr = tbody.getElementsByTagName('a');
+            //for循环遍历
+            for (var i = 0; i < aArr.length; i++) {
+                //绑定事件
+                aArr[i].onclick = function() {
+                    //删除所在的tr
+                    tbody.removeChild(this.parentNode.parentNode);
+                }
+            }
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <div class="wrap">
+        <!--添加按钮-->
+        <div>
+            <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd" />
+        </div>
+        <!--表格-->
+        <table>
+            <thead>
+                <tr>
+                    <!-- <th><input type="checkbox" id="j_cbAll" /></th> -->
+                    <th>课程名称</th>
+                    <th>所属学院</th>
+                    <th>已学会</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <!-- <td><input type="checkbox"/></td> -->
+                    <td>JavaScript</td>
+                    <td>番茄大学-番茄学院</td>
+                    <td><a href="javascrip:;" class="get">GET</a></td>
+                </tr>
+                <tr>
+                    <!-- <td><input type="checkbox"/></td> -->
+                    <td>css</td>
+                    <td>番茄大学-番茄学院</td>
+                    <td><a href="javascrip:;" class="get">GET</a></td>
+                </tr>
+                <tr>
+                    <!-- <td><input type="checkbox"/></td> -->
+                    <td>html</td>
+                    <td>番茄大学-番茄学院</td>
+                    <td><a href="javascrip:;" class="get">GET</a></td>
+                </tr>
+                <tr>
+                    <!-- <td><input type="checkbox"/></td> -->
+                    <td>jQuery</td>
+                    <td>番茄大学-番茄学院</td>
+                    <td><a href="javascrip:;" class="get">GET</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!--遮罩层-->
+    <div id="j_mask" class="mask"></div>
+    <!--添加区域-->
+    <div id="j_formAdd" class="form-add">
+        <div class="form-add-title">
+            <span>添加数据</span>
+            <div id="j_hideFormAdd">x</div>
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtLesson">课程名称：</label>
+            <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+        </div>
+        <div class="form-item">
+            <label class="lb" for="j_txtBelSch">所属学院：</label>
+            <input class="txt" type="text" id="j_txtBelSch" value="番茄大学-番茄学院">
+        </div>
+        <div class="form-submit">
+            <input type="button" value="添加" id="j_btnAdd">
+        </div>
+    </div>
+
+</body>
+
+</html>

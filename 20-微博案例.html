@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box {
+            border: 1px solid #ccc;
+            width: 800px;
+            padding: 10px;
+            margin: 30px auto;
+        }
+        textarea {
+            resize: none;
+            width: 630px;
+            outline-style: none;
+            font-size: 22px;
+        }
+        ul {
+            list-style: none;
+            margin: 10px 65px;
+        }
+        li {
+            height: 34px;
+            font: 22px/34px "simsun";
+            border-bottom: 1px dashed #000;
+        }
+        a {
+            float: right;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //需求1：点击按钮，让textarea里面的内容，作为生成的li的内容（还得增加一个a链接），出现在ul中。
+            //需求2：点击a链接，删除所在的li标签。
+
+
+            //需求1：点击按钮，让textarea里面的内容，作为生成的li的内容（还得增加一个a链接），出现在ul中。
+            //步骤：
+            //1.老三步。
+            //2.创建新的li标签，然后把textarea里面的内容赋值给li。
+            //3.把li放入ul中。
+
+
+            //1.老三步。
+            var txt = document.getElementById("txt");
+            var ul = document.getElementsByTagName("ul")[0];
+            var btn = txt.nextElementSibling || txt.nextSibling;
+
+
+            btn.onclick = function () {
+                //bug3: 空白内容没有资格添加进程序中。
+                if("" === txt.value || "" == txt.value.trim()){
+                    alert("添加的内容不能为空！！！");
+                    //切断代码，下面的不能执行
+                    return;
+                }
+                //2.创建新的li标签，然后把textarea里面的内容赋值给li。
+                var newLi = document.createElement("li");
+                //bug1: 赋值的时候注意a链接；
+                newLi.innerHTML = txt.value+"<a href='#'>删除</a>"
+                //3.把li放入ul中。
+                //bug4:添加先后问题：  先添加的在下面，后添加的在上面。
+                    //每次添加，新的li都应该在ul的第一个元素之前。
+//                ul.appendChild(newLi);
+                //第一种：利用没有元素的时候，第一个是undefined，
+                // 而insertBefore当中第二个参数如果是undefined那么这个方法和appendChild一样。
+//                ul.insertBefore(newLi,ul.children[0]);
+                //第二种：判断。如果ul有子元素，那么放在第一个之前，如果没有，直接添加进最末尾。
+                if(ul.children.length === 0){
+                    ul.appendChild(newLi);
+                }else{
+                    ul.insertBefore(newLi,ul.children[0]);
+                }
+                //bug2:添加完毕把txt里面的内容，清空。
+                txt.value = "";
+
+
+                //需求2：点击a链接，删除所在的li标签。
+                //第一个方法：生成一个li标签，就绑定一个a链接的事件。（执行效率高）
+                //获取每一个newLi里面的a链接并绑定事件。
+                var a = newLi.firstElementChild || newLi.firstChild;
+                a.onclick = function () {
+                    //删除他所在的li标签。
+                        //父节点.removeChild(子节点)
+                        //ul.removeChild(a链接所在的li)；
+
+                    ul.removeChild(newLi);
+                    //繁琐版
+//                    this.parentNode.parentNode.removeChild(this.parentNode)
+                }
+
+
+                //第二种，每创建一个li，获取所有的a链接，然后每一个都绑定事件。
+                    //书写位置必须是事件里面，因为在外面，页面加载的时候还没有a链接。
+                        //缺点：代码执行次数太多
+//                var aArr = document.getElementsByTagName("a");
+//
+//                for(var i=0;i<aArr.length;i++){
+//                    aArr[i].onclick = function () {
+//                        //删除所在的li。
+//                        ul.removeChild(this.parentNode);
+//                    }
+//                }
+            }
+
+
+
+
+
+        }
+    </script>
+</head>
+<body>
+
+    <div class="box">
+        <label for="txt">请发表心情 : </label>
+        <textarea id="txt" cols="30" rows="10"></textarea>
+        <button>发布</button>
+
+        <ul>
+            <!--<li>8:00今天天气不错！！！<a href="#">删除</a></li>-->
+
+        </ul>
+    </div>
+
+</body>
+</html>

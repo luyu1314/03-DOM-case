@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        select {
+            width: 200px;
+            height: 300px;
+            font: 22px/26px "simsun";
+            background-color: #b1ff66;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //需求1：点击前两个按钮，所在一侧的select标签中的所有option都移动到另一侧select标签中。
+            //需求2：点击后两个按钮，被选中的移动到另一侧。（标签上selected属性为true的移动到另一侧）
+
+            var sel1 = document.getElementById("sel1");
+            var sel2 = document.getElementById("sel2");
+            var inpArr = document.getElementsByTagName("input");
+            //需求1：点击前两个按钮，所在一侧的select标签中的所有option都移动到另一侧select标签中。
+            //步骤：
+            //1.获取事件源及相关元素。
+            //2.绑定事件
+            //3.书写事件驱动程序(把一侧的option移动到另一侧)（要点击之后在获取）
+
+            //1.获取事件源及相关元素。
+            //2.绑定事件
+            inpArr[0].onclick= function () {
+                //3.书写事件驱动程序(把一侧的option移动到另一侧)（要点击之后在获取）
+                    //先获取一侧的所有option,然后遍历添加到另一侧。
+                var optArr = sel1.children;
+//                sel2.appendChild(optArr);  因为appendChild只能添加节点。不能直接添加数组。
+                        //所以需要遍历添加。
+                for(var i=0;i<optArr.length;){
+                    //appendChild是添加节点（标签）的。push是添加数组的。
+                    sel2.appendChild(optArr[i]);
+                }
+            }
+
+
+            //绑定事件（第二个按钮和第一个类似，但方向相反）
+            inpArr[1].onclick = function () {
+                //获取的右侧的select标签中所有的option
+                var optArr = sel2.children;
+                //遍历添加进sel1中
+                for(var i=0;i<optArr.length;){
+                    sel1.appendChild(optArr[i]);
+                }
+            }
+
+
+            //需求2：点击后两个按钮，被选中的移动到另一侧。（标签上selected属性为true的移动到另一侧）
+            //绑定事件
+            inpArr[2].onclick = function () {
+                //获取一侧所有的option标签
+                    //遍历之后，判断，如果selected属性为true添加进另一侧。
+                var optArr = sel1.children;
+                //判断所有元素的selected属性不能只判断第一个，因为如果第一个没有被选中，那么就会进入死循环
+                for(var i=0;i<optArr.length;i++){
+                    //如果selected属性为true添加进另一侧
+                    if(optArr[i].selected == true){
+                        sel2.appendChild(optArr[i]);
+                        //如果该元素可以添加到另一侧，那么这个位置的元素会被下面的元素顶替
+                            //那么就要重新判断该位置的元素。就可以先自减在自增。这样判断的就是原位置的元素。
+                        i--;
+                    }
+                }
+            }
+
+
+            //绑定事件(第四个按钮和第三个按钮逻辑相反)
+            inpArr[3].onclick = function () {
+                //获取一侧所有的option标签
+                //遍历之后，判断，如果selected属性为true添加进另一侧。
+                var optArr = sel2.children;
+                //判断所有元素的selected属性不能只判断第一个，因为如果第一个没有被选中，那么就会进入死循环
+                for(var i=optArr.length-1;i>=0;i--){
+                    //如果selected属性为true添加进另一侧
+                    if(optArr[i].selected == true){
+                        sel1.appendChild(optArr[i]);
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <select name="" id="sel1" size="10" multiple>
+        <option value="">香蕉</option>
+        <option value="">苹果</option>
+        <option value="">鸭梨</option>
+        <option value="">橘子</option>
+    </select>
+
+    <input type="button" value=">>>"/>
+    <input type="button" value="<<<"/>
+    <input type="button" value=">"/>
+    <input type="button" value="<"/>
+
+    <select name="" id="sel2" size="10" multiple>
+
+    </select>
+
+
+</body>
+</html>
