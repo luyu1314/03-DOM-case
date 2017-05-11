@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            word-wrap: break-word;
+        }
+        
+        .wp {
+            width: 730px;
+            margin: 0px auto;
+        }
+        
+        .mtn {
+            margin-top: 5px!important;
+        }
+        
+        #ct .frame {
+            margin: 0;
+            border: none;
+        }
+        
+        .xfs_2 .frame-title,
+        .xfs_2 .frametitle,
+        .xfs_2 .tab-title {
+            background-color: #A90000;
+            background-position: 0 -99px;
+        }
+        
+        .xfs .frame-title,
+        .xfs .frametitle,
+        .xfs .tab-title,
+        .xfs .frame-title a,
+        .xfs .frametitle a,
+        .xfs .tab-title a {
+            color: #FFF!important;
+        }
+        
+        .xfs .frame-title,
+        .xfs .frametitle,
+        .xfs .tab-title {
+            border: none;
+            /*background: transparent url(images/mu.png) repeat-x 0 95;*/
+        }
+        
+        .title {
+            padding: 0 10px;
+            height: 32px;
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 32px;
+            overflow: hidden;
+        }
+        
+        .block {
+            margin: 10px 10px 0;
+        }
+        
+        ul,
+        menu,
+        dir {
+            display: block;
+            list-style-type: disc;
+            list-style: none;
+            -webkit-margin-before: 1em;
+            -webkit-margin-after: 1em;
+            -webkit-margin-start: 0px;
+            -webkit-margin-end: 0px;
+            -webkit-padding-start: 25px;
+        }
+        
+        .mls li {
+            padding: 0 0 5px;
+            width: 66px;
+            height: 85px;
+        }
+        
+        .ml li {
+            float: left;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+            font: 12px/1.5 Tahoma, 'Microsoft Yahei', 'Simsun';
+        }
+        
+        .mls p {
+            margin-top: 5px;
+        }
+        
+        .ml p,
+        .ml span {
+            display: block;
+            width: 100%;
+            height: 20px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+        }
+        
+        .mls img {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .ml img {
+            display: block;
+            margin: 0 auto;
+        }
+        
+        a img {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wp mtn">
+        <div id="diy3" class="area">
+            <div id="frameipq7f2" class="xfs xfs_2 frame move-span cl frame-1">
+                <div class="title frame-title"><span class="titletext">当前在线用户</span></div>
+                <div id="frameipq7f2_left" class="column frame-1-c">
+                    <div id="frameipq7f2_left_temp" class="move-span temp"></div>
+                    <div id="portal_block_695" class="block move-span">
+                        <div id="portal_block_695_content" class="dxb_bc">
+                            <div class="module cl ml mls" id="users">
+                                <ul>
+
+                                    <!--<li>-->
+                                    <!--<a href="#" target="_blank">-->
+                                    <!--<img src="images/28-noavatar_small.gif" width="48" height="48" alt="tdxy01">-->
+                                    <!--</a>-->
+                                    <!--<p>-->
+                                    <!--<a href="#" title="tdxy01" target="_blank">tdxy01</a>-->
+                                    <!--</p>-->
+                                    <!--</li>-->
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //模拟从服务器获取数据
+        var users = [{
+            "name": "tdxy01",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "沉眠楚人",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "爱上karina",
+            "icon": "images/28_avatal.jpg"
+        }, {
+            "name": "tdxy01",
+            "icon": "images/28_avatar_small.jpg"
+        }, {
+            "name": "today",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "hlg",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "itcast",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "heima",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "nima",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "gege",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "nimei",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "goodman",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "haoren",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "yuanxiaojie",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "zhengyue",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "qishi",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "qqtang",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "wawawa",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "haha",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "robot",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "XFlute",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "lovmilan",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "johnny670",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "xiaobinbin02",
+            "icon": "images/28-noavatar_small.gif"
+        }, {
+            "name": "axxxxx",
+            "icon": "images/28-noavatar_small.gif"
+        }];
+
+
+
+        //需求:在页面上显示很多的用户信息。
+        //思路：产生很多的li标签，里面包括很多其他标签。然后跟换里面的数据。
+
+
+
+        //方法1：把li和他所有的子标签都当做ul的innerHTML属性。
+        //步骤：
+        //1.设置一个变量装字符串。
+        //2.利用for循环，产生很多的li和他的子标签。
+        //3.累加到字符串中。
+        //4.把字符串设置为ul的innerHTML属性。
+
+        //    //1.设置一个变量装字符串。
+        //    var ul = document.getElementsByTagName("ul")[0];
+        //    var str = "";
+        //    //2.利用for循环，产生很多的li和他的子标签。
+        //        //个数不是我们决定的，而是数组长度决定。
+        //    for(var i=0;i<users.length;i++){
+        //        //3.累加到字符串中。
+        //        str += '<li><a href="#" target="_blank"><img src="'+users[i].icon+'" width="48" height="48" alt="tdxy01"></a><p><a href="#" title="'+users[i].name+'" target="_blank">'+users[i].name+'</a></p></li>';
+        //
+        ////        str += '<li>' +
+        ////                    '<a href="#" target="_blank">' +
+        ////                        '<img src="'+users[i].icon+'" width="48" height="48" alt="tdxy01">' +
+        ////                    '</a>' +
+        ////                    '<p>' +
+        ////                        '<a href="#" title="'+users[i].name+'" target="_blank">'+users[i].name+'</a>' +
+        ////                    '</p>' +
+        ////                '</li>';
+        //    }
+        //    //4.把字符串设置为ul的innerHTML属性。
+        //    ul.innerHTML = str;
+
+
+
+
+
+
+        //方法2：造一个li标签。然后把他内部的所有内容以innerHTML属性的方式翻入li中。然后每一个li都放入ul中。
+        var ul = document.getElementsByTagName("ul")[0];
+
+        //造很多的li标签。
+        for (var i = 0; i < users.length; i++) {
+            var newLi = document.createElement("li");
+            //为li添加内容
+            newLi.innerHTML = '<a href="#" target="_blank"><img src="' + users[i].icon + '" width="48" height="48" alt="tdxy01"></a><p><a href="#" title="' + users[i].name + '" target="_blank">' + users[i].name + '</a></p>';
+            //li放入ul中
+            ul.appendChild(newLi);
+        }
+    </script>
+</body>
+
+</html>
