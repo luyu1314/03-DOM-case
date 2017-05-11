@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <button>创建</button>
+    <ul></ul>
+    <script>
+        //创建多级标签，添加进ul中。
+        var btn = document.getElementsByTagName("button")[0];
+        var ul = document.getElementsByTagName("ul")[0];
+
+        //        //老三步>第1种:
+        //        btn.onclick = function () {
+        //            //创建两个标签。
+        //            var newLi = document.createElement("li");
+        //            var input = document.createElement("input");
+        //            //为input属性赋值。
+        //            input.value = "hello world";
+        //            //把input放入li，把li放入ul
+        //            newLi.appendChild(input);
+        //            ul.appendChild(newLi);
+        //        }
+
+
+        //老三步>第1种:
+        btn.onclick = function() {
+            //通过innerHTML属性赋值。如果在原有基础上赋值，要用+=
+            ul.innerHTML += "<li><input type='text' value='hello world'/></li>"
+        }
+    </script>
+
+
+</body>
+
+</html>

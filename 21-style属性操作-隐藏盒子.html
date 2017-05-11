@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="box" style="cursor: pointer;width: 200px;height: 200px;background-color: pink;"></div>
+
+    <script>
+
+        var box = document.getElementById("box");
+
+        box.onclick = function () {
+            //隐藏盒子。
+            //1.overflow：hidden;			隐藏盒子超出的部分。
+//            2.display: none;				隐藏盒子，而且不占位置。(用的最多)
+            this.style.display = "none";
+            //3.visibility: hidden;			隐藏盒子，而且占位置。
+//            this.style.visibility = "hidden";
+//            4.opacity: 0;					隐藏盒子，而且占位置。
+            this.style.opacity = 0;
+            //5.Position/top/left/...-999px 隐藏盒子，而且占位置。
+//            this.style.position = 'absolute';
+//            this.style.left = "-999px";
+
+
+
+        }
+
+    </script>
+
+
+</body>
+</html>

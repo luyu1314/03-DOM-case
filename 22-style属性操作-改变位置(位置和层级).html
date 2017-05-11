@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+        }
+        
+        div {
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <button>走你...</button>
+
+    <img src="images/22-mm.png" width="200" />
+    <div style="width: 200px;height: 200px;background-color: red;"></div>
+
+    <script>
+        //需求：点击按钮，让div和图片都移动，但是图片要压住div（提高图片的层级）。
+
+        //1.获取事件源
+        //2.绑定是事件
+        //3.书写事件驱动程序
+
+        //1.获取事件源
+        var img = document.getElementsByTagName("img")[0];
+        var div = document.getElementsByTagName("div")[0];
+        var btn = document.getElementsByTagName("button")[0];
+        //2.绑定是事件
+        btn.onclick = function() {
+            //3.书写事件驱动程序
+            img.style.top = "300px";
+            img.style.left = "300px";
+            img.style.zIndex = "11"
+
+            div.style.top = "320px";
+            div.style.left = "320px";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        body {
+            background: url("images/21-1.jpg") no-repeat;
+        }
+        
+        .box {
+            height: 110px;
+            padding: 40px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+        }
+        
+        img {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box" id="box">
+        <img src="images/21-1.jpg" width="200" />
+        <img src="images/21-2.jpg" width="200" />
+        <img src="images/21-3.jpg" width="200" />
+        <img src="images/21-4.jpg" width="200" />
+        <img src="images/21-5.jpg" width="200" />
+    </div>
+
+
+    <script>
+        //需求：鼠标点击img图片，body的背景被修改。
+        //步骤：
+        //1.获取事件源和相关元素
+        //2.绑定事件
+        //3.书写事件驱动程序（修改body的背景）
+
+        //1.获取事件源和相关元素
+        var box = document.getElementById("box");
+        var body = document.body;
+        var imgArr = box.children;
+        //2.绑定事件
+        for (var i = 0; i < imgArr.length; i++) {
+            //自定义属性
+            imgArr[i].index = i;
+            imgArr[i].onclick = function() {
+                //3.书写事件驱动程序（修改body的背景）
+                //body.style.background = "url(images/21-"+(this.index+1)+".jpg) no-repeat";
+                body.style.backgroundImage = "url(images/21-" + (this.index + 1) + ".jpg)";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

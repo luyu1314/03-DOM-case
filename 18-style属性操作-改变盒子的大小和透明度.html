@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            margin: 100px 20px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button>点击发生变化</button>
+
+    <div></div>
+
+
+    <script>
+        //获取元素，老三步设置样式。
+        var div = document.getElementsByTagName("div")[0];
+        var btn = document.getElementsByTagName("button")[0];
+
+        btn.onclick = function() {
+            //设置样式。宽高背景色透明度。
+            div.style.width = "300px";
+            div.style.height = "300px";
+            div.style.backgroundColor = "black";
+            div.style.opacity = "0.3"; //ie678不支持
+            div.style.filter = "alpha(opacity=30)"; //ie678支持他
+        }
+    </script>
+
+
+</body>
+
+</html>

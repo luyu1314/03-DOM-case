@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        .test {
+            margin: 100px auto;
+            text-align: center;
+        }
+        
+        .box {
+            width: 800px;
+            margin: 160px auto;
+        }
+        
+        input {
+            width: 600px;
+            height: 40px;
+            outline-style: none;
+            padding-left: 10px;
+            font-size: 24px;
+            float: left;
+        }
+        
+        button {
+            width: 100px;
+            height: 44px;
+            float: left;
+        }
+        
+        ul {
+            float: left;
+            list-style: none;
+            width: 592px;
+            border: 1px solid red;
+            padding: 10px;
+            border-top: 0;
+        }
+        
+        li {
+            font: 16px/24px "simsun";
+        }
+        
+        li:hover {
+            background-color: red;
+            cursor: pointer;
+        }
+    </style>
+
+    <script>
+        window.onload = function() {
+            //需求：在input中输入内容，在自己定义的数组中搜索以input内容为开头的元素，生成li标签，在ul中显示。
+            //思路：键盘弹起事件（不是键盘按下，oninput也可以）。
+
+            //步骤：
+            //1.老三步。和相关元素获取以及数组的定义。（数组用来模拟数据库）
+            //2.获取input内部的value值，然后从数组中查找以value值为开头的元素。添加到一个新数组中。
+            //3.遍历新数组，生成li，然后把新数组中的元素作为innerHTML属性赋值给li。
+            //4.创建一个ul，在把li添加到ul中，把ul添加到box中。
+
+
+
+            //1.老三步。和相关元素获取以及数组的定义。（数组用来模拟数据库）
+            var box = document.getElementById("box");
+            var inp = box.firstElementChild || box.firstChild;
+            var arrData = ["a", "ab", "abc", "abcd", "aa", "aaa", "bb", "bbc", "ccc", "bcd"];
+
+
+            inp.onkeyup = function() {
+                //每次判断以什么为开头的时候都要初始化(清空)一下数组。
+                var newArr = [];
+                //2.获取input内部的value值，然后从数组中查找以value值为开头的元素。
+                //   添加到一个新数组中。
+                for (var i = 0; i < arrData.length; i++) {
+                    //判断：只要数组中的元素是以input的value属性为开头就添加到新数组中。
+                    //数组中的元素以input的value值为开头
+                    if (0 == arrData[i].indexOf(this.value)) {
+                        newArr.push(arrData[i]);
+                    }
+                }
+
+
+                //bug1: 不能产生多个ul，只能存在一个。产生新的要把旧的删除。
+                //判断：如果原来有，那么就删除，否则不用管。（有就删除在创建，没有就直接创建）
+                if (box.children[2]) {
+                    box.removeChild(box.children[2]);
+                }
+
+                //bug2: 搜索不到内容就不能生成ul。(newArr为空)
+
+                //bug3: 空字符串不能进行遍历查找
+                if (newArr.length == 0 || this.value == "") {
+                    //禁止下面的ul产生，和把li放入ul以及ul放入box.
+                    return;
+                }
+
+                //4.创建一个ul，在把li添加到ul中，把ul添加到box中。
+                var ul = document.createElement("ul");
+                //3.遍历新数组，生成li，然后把新数组中的元素作为innerHTML属性赋值给li。
+                for (var i = 0; i < newArr.length; i++) {
+                    var newLi = document.createElement("li");
+                    newLi.innerHTML = newArr[i];
+                    ul.appendChild(newLi);
+                }
+                //把ul放入box中。
+                box.appendChild(ul);
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="test">测试请输入 a 或 b 或 c </div>
+    <div class="box" id="box">
+        <input type="text" />
+        <button>搜索</button>
+
+        <!--<ul>-->
+        <!--<li>你好</li>-->
+        <!--<li>你好</li>-->
+        <!--<li>你好</li>-->
+        <!--</ul>-->
+
+    </div>
+
+
+</body>
+
+</html>

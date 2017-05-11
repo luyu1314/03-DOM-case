@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            display: block;
+            width: 300px;
+            height: 30px;
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            outline-style: none;
+        }
+        button {
+            width: 80px;
+            height: 40px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+    <input type="text"/>
+
+    <button>设置</button>
+
+
+    <script>
+        var inpArr = document.getElementsByTagName("input");
+        var btn = document.getElementsByTagName("button")[0];
+
+        //老三步，input获取焦点后设置一个高亮显示。
+        btn.onclick = function () {
+            //为每一个input绑定事件
+            for(var i=0;i<inpArr.length;i++){
+                inpArr[i].onfocus = function () {
+                    //高亮显示
+                    this.style.border = "1px solid red";
+                    this.style.backgroundColor = "yellowgreen";
+                }
+
+                inpArr[i].onblur = function () {
+                    //高亮显示
+                    this.style.cssText = "";
+                }
+
+            }
+        }
+
+
+
+    </script>
+
+
+</body>
+</html>
