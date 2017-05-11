@@ -38,8 +38,8 @@ some case about DOM to practice
          
 <table style="border-collapse:collapse;">
 <tr><td>序号<td>案例名称</tr>
-<tr><td>18<td>改变盒子大小透明度</tr>
-<tr><td>19<td>input获取高亮</tr>
+<tr><td>18<td>改变盒子的大小和透明度</tr>
+<tr><td>19<td>设置input获取焦点高亮显示</tr>
 <tr><td>20<td>高级隔行变色</tr>
 <tr><td>21<td>百度皮肤和隐藏盒子 </tr>
 <tr><td>22<td>改变位置（位置和层级）</tr>
