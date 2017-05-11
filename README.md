@@ -17,7 +17,7 @@ some case about DOM to practice
 </table>
 
 
-### ---------表单属性操作案例-----------------------
+### ---------表单属性操作~案例-----------------------
 
 <table style="border-collapse:collapse;">
 <tr><td>序号<td>案例名称<td>备注</tr>
@@ -33,7 +33,7 @@ some case about DOM to practice
 
 </table>
 
-### -------------style属性操作案例----------------
+### -------------style属性操作~案例----------------
 
          
 <table style="border-collapse:collapse;">
@@ -43,4 +43,26 @@ some case about DOM to practice
 <tr><td>20<td>高级隔行变色</tr>
 <tr><td>21<td>百度皮肤和隐藏盒子 </tr>
 <tr><td>22<td>改变位置（位置和层级）</tr>
+</table>
+
+### -------------节点的操作~案例----------------
+
+         
+<table style="border-collapse:collapse;">
+<tr><td>序号<td>案例名称</tr>
+<tr><td>23<td>创建多级标签</tr>
+<tr><td>24<td>四大美女高亮显示</tr>
+</table>
+
+### -------------DOM综合大案例----------------
+
+         
+<table style="border-collapse:collapse;">
+<tr><td>序号<td>案例名称</tr>
+<tr><td>25<td>祝愿墙</tr>
+<tr><td>26<td>选择水果</tr>
+<tr><td>27<td>微博案例</tr>
+<tr><td>28<td>在线用户 </tr>
+<tr><td>29<td>动态数据添加</tr>
+<tr><td>30<td>模拟百度搜索</tr>
 </table>
